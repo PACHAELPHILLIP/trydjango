@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-lqn-26v*)i=tlw9=rzs)j9801^()@hepy6ya02%_fn0tfev%f&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://trydjango-pachal.herokuapp.com/',]
 
 
 # Application definition
@@ -120,20 +120,15 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-# Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'mysite/static'),
+    os.path.join(BASE_DIR, 'static'),
 )
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -141,5 +136,5 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Activate Django-Heroku.
 django_heroku.settings(locals()),
-
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage',
+DISABLE_COLLECTSTATIC= DISABLE_COLLECTSTATIC
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
